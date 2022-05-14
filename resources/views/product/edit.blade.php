@@ -8,6 +8,7 @@
  <div class="card-body">
  <form method="POST" action="{{ route('product/register') }}"
 >
+
  @csrf
  <div class="form-group row">
  <label for="name" class="col-md-4 col-formlabel text-md-right">{{ __('Product') }}</label>
@@ -84,3 +85,5 @@ id" autofocus>
  </div>
 </div>
 @endsection
+
+

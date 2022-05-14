@@ -19,7 +19,7 @@
  id
  </th>
 <th>
- Product
+name
  </th>
 <th>
  unit

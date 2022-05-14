@@ -33,6 +33,7 @@ Route::get('/product/search/{id}', [ProductController::class, 'search'])->name('
 
 Route::get('/Catagory/register', [CatagoryController::class, 'register'])->name('Catagory/register');
 Route::post('/Catagory/register', [CatagoryController::class, 'store'])->name('Catagory/register');
+
 Route::get('/Catagory/get_all', [CatagoryController::class, 'get_all'])->name('Catagory/get_all');
 Route::get('/Catagory/get_by_id/{id}', [CatagoryController::class, 'get_by_id']);
 
