@@ -1,107 +1,69 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
-
-    public function register(){
         //For testing purpose, use hard coded data, till we design UI
-        return view('product.register');
         
-        }
+  public function register()
+  {
+  return view('product.register');
+  }
+    function store(Request $request)
+    
+    {
+      $product =new product();
+      $product->id = $request->id;
+      $product->name = $request->name;
+      $product->unit = $request->unit;
+      $product->price = $request->price;
+      $product->quantity = $request->quantity;
+     $is_saved = $product->save();
+    if($is_saved){
+    echo "  YOUR DATA Record saved successfully.";
+               }
+    else{
+     echo "Sorry, try again something went wrong.";
+       }
+
        
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function get_all()
     {
-        
+     $product = Product::all();
+     return view('product.list', compact('product'));
+    } 
+    public function edit($id)
+ {
+ $product = Product::find($id);
+ return view('product.edit', compact('product'));
+ }
+ public function update(Request $request)
+ {
+  $request->validate([
+    'name' => 'required'
+    ]);
+    $product= Product::find($request->id);
+    $product->name = $request->name;
+    $product->unit = $request->unit;
+    $product->price = $request->price;
+    $product->quantity = $request->quantity;
+    $product->save();
+    return redirect('product/list');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $product=new product();
-        $product->name=$request->name;
-        $product->unit=$request->unit;
-        $product->price=$request->price;
-        $product->quantity=$requestquantity;
-        if ($is_successed=$product::save());
-        if ($is_successed) {
-            echo 'something saved successed';
-        }
-        else echo 'something went wrong';
+    public function delete($id)
+ {
+ Product::where('id', $id)->delete();
+ return redirect('product/list');
+   
 }
-    
-    
 
-
-    
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(product $product)
+public function search($id)
     {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(product $product)
-    {
-        //
-    }
-}
+     $product = Product::where('id',$id)->first();
+     return view('product.search', compact('product'));
+    } 
+  }
