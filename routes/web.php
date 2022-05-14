@@ -37,3 +37,5 @@ Route::post('/Catagory/register', [CatagoryController::class, 'store'])->name('C
 Route::get('/Catagory/get_all', [CatagoryController::class, 'get_all'])->name('Catagory/get_all');
 Route::get('/Catagory/get_by_id/{id}', [CatagoryController::class, 'get_by_id']);
 
+Route::get('/product/list', [ProductController::class, 'get_all'])->name('product/list'); 
+Route::get('/Catagory/get_all', [CatagoryController::class, 'get_all'])->name('Catagory/get_all');
