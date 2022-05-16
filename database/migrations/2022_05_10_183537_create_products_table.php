@@ -16,6 +16,12 @@ class CreateProductsTable extends Migration
             $table->double('price')->nullable();
             $table->integer('quantity');
             $table->timestamps();
+            //$table->('catagory_id');
+            //$table->integer('catagory_id')->unsigned();
+             // $table->foreign('catagory_id')
+               //->references('id')
+                // ->on('Catagories');
+            //->onDelete('cascade');
         });
     }
 
