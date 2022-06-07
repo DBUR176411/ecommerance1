@@ -17,7 +17,11 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->timestamps();
             
-            
+            $table->unsignedBigInteger('catagory_id');
+           $table->foreign('catagory_id')
+           ->references('id')
+           ->on('Catagories')
+           ->onDelete('cascade');
         });
     }
 
