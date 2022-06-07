@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
             $table->double('price')->nullable();
             $table->integer('quantity');
             $table->timestamps();
-            
+            //add relation
             $table->unsignedBigInteger('catagory_id');
            $table->foreign('catagory_id')
            ->references('id')
