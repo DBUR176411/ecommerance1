@@ -12,7 +12,7 @@ Route::get('/', function () {
 Route::get('/product/register', [ProductController::class, 'register'])->name('product/register');
 Route::post('/product/register', [ProductController::class, 'store'])->name('product/register');
 
-
+// route code
 Auth::routes();
 Route::get('/home', [App\Http\controllers\HomeControllers ::class, 'index'])->name('home');
 Route::get('/product/list', [ProductController::class, 'get_all'])->name('product/list');
