@@ -44,6 +44,7 @@ id" autofocus>
  <strong>{{ $message }}</strong>
  </span>
  @enderror
+ //this register code
  </div>
  </div>
  <div class="form-group row">
